@@ -7,8 +7,12 @@ using namespace std;
 struct timeval before, after;
 double timing;
 
-void quicksort(int a[], int first, int last);
-void makeArrays(int*  b[], int size); // generate of pointer to  arrays
+// taken from class note entirely
+// added an if block that checks whether the array is
+// small enough to use the first element as pivot
+void quicksort(int a[], int first, int last); 
+
+void makeArrays(int*  b[], int size); // generate array of pointer to  arrays
 void makeArray(int a[], int size); // generate array of random integers
 
 const int SIZE = 10000;
@@ -17,7 +21,6 @@ int main(){
     int* b[100];
     double total  = 0;
     makeArrays(b,100);
-    //gettimeofday(&before,0);
     for(int i=0;i<100; ++i)
     {
         gettimeofday(&before,0);
@@ -33,6 +36,9 @@ int main(){
     return 0;
 }
 
+// taken from class note entirely.
+// added an if block that checks whether the array is
+// small enough to use the first element as pivot
 void quicksort(int a[], int first, int last)
 {
     if (last<=first)
@@ -60,6 +66,7 @@ void quicksort(int a[], int first, int last)
     quicksort(a, j+1, last);
 } // quicksort()
 
+// generate array of pointer to arrays
 void makeArrays(int* b[],int size)
 {
     srand(42);//seed random
@@ -70,6 +77,8 @@ void makeArrays(int* b[],int size)
         b[i] = a;
     }
 }
+
+// generate array of random integers
 void makeArray(int a[], int size)
 {
     for (int i=0; i<size; i++)
