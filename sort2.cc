@@ -7,12 +7,13 @@ using namespace std;
 struct timeval before, after;
 double timing;
 
+// from class note
+// edited call signature to work with quicsort
 void insertionsort(int a[], int first, int last);
-void shellsort(int a[], int first, int last);
-//void selectionsort(int a[], int first, int last);
+
 // taken from class note entirely
-// added an if block that checks whether the array is
-// small enough to use the first element as pivot
+// replace std::swap call with inline code to redce execution time
+// add if block that calls insertionsort when array is small
 void quicksort(int a[], int first, int last); 
 
 void makeArrays(int*  b[], int size); // generate array of pointer to  arrays
@@ -37,27 +38,23 @@ int main(){
     
     cout <<"average is " << total/100 <<endl;
 
-    /*shellsort(b[0],0,SIZE);
-    for (int i=0; i<SIZE; i++)
-        cout << b[0][i] << " ";
-    */
+    
     return 0;
 }
 
 // taken from class note entirely.
-// added an if block that checks whether the array is
-// small enough to use the first element as pivot
+// replace std::swap call with inline code to reduce execution time
+// add if block that calls insertionsort when array is small
 void quicksort(int a[], int first, int last)
 {
     if (last<=first)
         return;
     if (last - first < 21)
     {
-        //shellsort(a,first,last);
         insertionsort(a,first,last);
         return;
     }
-    /*if (last-first > 5000)// if array not small, use middle element as pivot
+    /*if (last-first > 500)// if array not small, use middle element as pivot
     {  
         int temp = a[first];
         a[first] = a[(last+first)/2];
@@ -90,6 +87,7 @@ void quicksort(int a[], int first, int last)
 } // quicksort()
 
 // from class note
+// edited call signature to work with quicksort
 void insertionsort(int a[], int first, int last)
 {
     for (int p = first; p < last; ++p)
@@ -122,22 +120,6 @@ void shellsort(int a[], int first, int last)
     }
 }
 
-// from class note
-/*void selectionsort(int a[], int first, int last)
-{
-    for (int k = last-1; k > first; --k)
-    {
-        int best = first;
-        for (int j = first+1; j <= k; ++j)
-        {
-            if (a[j] > a[best])
-                best = j;
-        }
-        int temp = a[best];
-        a[best] =  a[k];
-        a[k] = temp;
-    }
-}*/
 // generate array of pointer to arrays
 void makeArrays(int* b[],int size)
 {
