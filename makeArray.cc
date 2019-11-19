@@ -37,8 +37,17 @@ void fewUniquesArray(int a[], int size, int n)
 
 void reversedArray(int a[], int size)
 {
-    for(int i=0; i<size; ++i)
+    for(int i=1; i<=size; ++i)
     {
         a[i]=size-i;
+    }
+}
+
+void randomArray(int a[], int size)
+{
+    srand(42);
+    for (int i = 0; i < size; i++)
+    {
+        a[i] = rand();
     }
 }

@@ -9,3 +9,5 @@ void nearlyOrderedArray(int a[], int size, int n);
 void fewUniquesArray(int a[], int size, int n);
 
 void reversedArray(int a[], int size);
+
+void randomArray(int a[], int size);

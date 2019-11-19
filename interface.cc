@@ -23,11 +23,12 @@ int  getNumber(string  prompt)
 
 void newArray(int*& a, int& size)
 {
+    delete[] a;
     size = getNumber("Enter array size: ");
     a = new int[size];
 }
 
-void fillArray(int* a, int size)
+void fillArray(int a[], int size)
 {
     for(int i=0; i<size; ++i)
     {
@@ -41,7 +42,7 @@ void makeUserInputArray(int*&a, int& size)
     fillArray(a,size);
 }
 
-void printArray(int* a, int size)
+void printArray(int a[], int size)
 {
     int max = 0; //find biggest number in array
     for (int i=0; i<size; i++)
@@ -62,7 +63,7 @@ void printArray(int* a, int size)
     int terminal = 80;
     int count = terminal/(digits+2);
     // evenly spaced output
-    cout << endl;
+    //cout << endl;
     for (int i=0; i<size; ++i)
     {
         if(i % count == 0)
@@ -71,5 +72,5 @@ void printArray(int* a, int size)
         }
         cout << setw(digits+1) << a[i] <<" ";
     }
-    cout << endl;
+    cout << endl << endl;
 }

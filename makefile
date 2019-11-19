@@ -1,5 +1,5 @@
-result: main.o interface.o makeArray.o
-	g++ -o main main.o interface.o makeArray.o
+result: main.o interface.o makeArray.o sortfunctions.o
+	g++ -o main main.o interface.o makeArray.o sortfunctions.o
 
 main.o: main.cc interface.h makeArray.h
 	g++ -c main.cc
@@ -9,3 +9,6 @@ interface.o: interface.cc interface.h
 
 makeArray.o: makeArray.cc makeArray.h  
 	g++ -c makeArray.cc
+
+sortfunctions.o: sortfunctions.cc sortfunctions.h
+	g++ -c sortfunctions.cc
