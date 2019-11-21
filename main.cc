@@ -33,7 +33,7 @@ int main()
         (double)((double)before.tv_sec + (double)before.tv_usec / (1000 * 1000));
     cout << "sorted array";
     printArray(a, size);
-    cout << "sort function execution time: " << timing << endl;
+    cout << "sorting function execution time: " << timing << endl;
 
     return 0;
 }
