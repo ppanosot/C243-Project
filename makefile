@@ -1,5 +1,5 @@
 result: main.o interface.o sortfunctions.o
-	g++ -o main main.o interface.o sortfunctions.o
+	g++ -o sort main.o interface.o sortfunctions.o
 
 main.o: main.cc interface.h sortfunctions.h
 	g++ -c main.cc
