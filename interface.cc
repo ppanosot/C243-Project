@@ -1,8 +1,16 @@
+/***********************************************************
+  Author:	Patarut Panosot,
+		Aaron Spicer
+  Class: 	C243 Data Structures
+  File name:	interface.cc
+  Last updated:	November 2019
+  Description:	interface to dynamically create, input, and 
+		output integer arrays.
+************************************************************/
 #include <iostream>
 #include <iomanip> // setw()
 #include <string>
 #include <cmath> //abs()
-#include <climits> //INT_MAX
 #include "interface.h"
 using namespace std;
 
@@ -32,11 +40,11 @@ void fillArray(int a[], int size)
 {
     for(int i=0; i<size; ++i)
     {
-        a[i] = getNumber("Enter an integer: ");
+        a[i] = getNumber("");//("Enter an integer: ");
     }
 }
 
-void makeUserInputArray(int*&a, int& size)
+void newUserInputArray(int*&a, int& size)
 {
     newArray(a,size);
     fillArray(a,size);
@@ -50,8 +58,6 @@ void printArray(int a[], int size)
         if (abs(a[i])>max)
             max = abs(a[i]);
     }
-    if (max > INT_MAX)
-        max = INT_MAX;
 
     // determine the number of  digits 
     int digits = 0;
@@ -63,7 +69,6 @@ void printArray(int a[], int size)
     int terminal = 80;
     int count = terminal/(digits+2);
     // evenly spaced output
-    //cout << endl;
     for (int i=0; i<size; ++i)
     {
         if(i % count == 0)
@@ -72,5 +77,5 @@ void printArray(int a[], int size)
         }
         cout << setw(digits+1) << a[i] <<" ";
     }
-    cout << endl << endl;
+    cout << endl;
 }

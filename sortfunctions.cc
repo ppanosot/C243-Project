@@ -1,44 +1,19 @@
+/***********************************************************
+  Author:	Patarut Panosot,
+		Aaron Spicer
+  Class: 	C243 Data Structures
+  File name:	sortfunctions.cc
+  Last updated:	November 2019
+  Description:	Optimized sorting function for integer array
+***********************************************************/
+
 #include "sortfunctions.h"
 void swap(int a[], int x, int y) 
 {
     int temp = a[x];
     a[x] = a[y];
     a[y] = temp;
-}
-
-// from class note. modified to call insertion sort if array is small 
-void quicksort(int a[], int first, int last)
-{
-
-    if (last - first < 21)
-    {
-    	insertionsort(a, first, last);
-    	return;
-    }
-    int i = first + 1, j = last;
-    while (a[i] < a[first] && i <= j)
-        ++i;
-    while (a[j] > a[first])
-        --j;
-
-    while (i < j)
-    {
-        swap(a, i, j);
-
-        do
-            ++i;
-        while (a[i] < a[first]);
-
-        do
-            --j;
-        while (a[j] > a[first]);
-    }
-
-    swap(a, first, j);
-    quicksort(a, first, j - 1);
-    quicksort(a, j + 1, last);
-} // quicksort()
-
+} // swap()
 
 // from class note. modified to work with with subarray
 // given the first and last indices.
@@ -81,7 +56,7 @@ void shellsort(int a[], int first, int last)
 // Vladimir Yaroslavskiy
 void dualpivotQuicksort(int a[], int first, int last)
 {
-    if (last - first < 27)
+    if (last - first < 34)
     {
         insertionsort(a, first, last);
         return;
@@ -152,9 +127,9 @@ void dualpivotQuicksort(int a[], int first, int last)
 } // dualpivotQuicksort()
 
 
-void dualHybridsort(int a[], int first, int last)
+void hybridsort(int a[], int first, int last)
 {
-    if(last - first < 27 )
+    if(last - first < 34)
     {
         insertionsort(a, first, last);
         return;
@@ -167,17 +142,17 @@ void dualHybridsort(int a[], int first, int last)
         else
             --k;
     }
-    // if more than 3/4 is increasing 
-    if(k > (last-first)*3/4)
+    // if more than 4/7 is increasing 
+    if(k > (last-first)*4/7)
     {
         insertionsort(a, first, last);
         return;
     }
-    // if more than 3/4 is decreasing
-    else if (k < -(last-first)*3/4)
+    // if more than 10/13 is decreasing
+    else if (k < -(last-first)*10/13)
     {
         shellsort(a, first, last);
         return;
     } 
     dualpivotQuicksort(a, first, last); 
-}
+} // hybridsort()

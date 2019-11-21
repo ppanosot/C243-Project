@@ -1,8 +1,12 @@
-
+/***********************************************************
+  Author:	Patarut Panosot,
+		Aaron Spicer
+  Class: 	C243 Data Structures
+  File name:	sortfunctions.h
+  Last updated:	November 2019
+  Description:	Optimized sorting function for integer array
+***********************************************************/
 void swap(int a[], int x, int y);
-
-// from class note. modified to call insertion sort if array is small
-void quicksort(int a[], int first, int last);
 
 // from class note. first and last index parameters to
 // make it callable on subarray
@@ -18,4 +22,4 @@ void dualpivotQuicksort(int a[], int first, int last);
 
 // call insertion sort if array is mostly ordered
 // else call dualpivot quicksort
-void dualHybridsort(int a[], int first, int last);
+void hybridsort(int a[], int first, int last);
